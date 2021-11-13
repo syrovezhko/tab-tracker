@@ -4,7 +4,7 @@ const config = require('../config/config')
 
 function jwtSignUser (user) {
   const ONE_WEEK = 60 * 60 * 24 * 7
-  return jwt.sign(user, config.authenticaion.jwtSecret, {
+  return jwt.sign(user, config.authentication.jwtSecret, {
     expiresIn: ONE_WEEK
   })
 }
@@ -28,26 +28,22 @@ module.exports = {
           email: email
         }
       })
-      console.log('user', user.toJSON())
       if (!user) {
         return res.status(403).send({
           error: 'The login information was incorrect'
         })
       }
-      console.log(password)
-      console.log(user.password)
       const isPasswordValid = password === user.password
       if (!isPasswordValid) {
         return res.status(403).send({
           error: 'The login information was incorrect'
         })
       }
-      const userJson = user.toJSON()
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
       })
-    console.log('user', user.toJSON())
+    
     } catch (err) {
       res.status(500).send({
         error: 'An error has occorred trying to log in'
