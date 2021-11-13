@@ -3,7 +3,7 @@
     <div class="col-3 col-xs-12 col-md-4">
       <div class="card rounded-3">
         <div class="card-header text-light bg-dark">
-          Register
+          Log In
         </div>
         <div class="card-body">
           <form novalidate>
@@ -28,7 +28,7 @@
             <button
               type="submit"
               class="btn btn-dark"
-              @click="register">
+              @click="login">
               Submit
             </button>
           </form>
@@ -49,9 +49,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
