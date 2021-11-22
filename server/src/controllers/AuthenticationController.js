@@ -30,21 +30,25 @@ module.exports = {
       })
       if (!user) {
         return res.status(403).send({
-          error: 'The login information was incorrect'
+          error: 'The email information was incorrect'
         })
       }
-      const isPasswordValid = password === user.password
+      const isPasswordValid = await user.comparePassword(password)
+      console.log(password, user.password)
+      console.log(isPasswordValid)
       if (!isPasswordValid) {
         return res.status(403).send({
-          error: 'The login information was incorrect'
+          error: 'The password information was incorrect'
         })
       }
+      const userJson = user.toJSON()
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
       })
     
     } catch (err) {
+      console.log(err)
       res.status(500).send({
         error: 'An error has occorred trying to log in'
       })

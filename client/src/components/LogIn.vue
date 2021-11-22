@@ -24,7 +24,6 @@
             <div
             class="error"
             v-html="error"/>
-            <v-btn
             <button
               type="submit"
               class="btn btn-dark"
