@@ -32,7 +32,7 @@
         </ul>
         <div class="d-flex">
           <ul class="navbar-nav me-2 mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li v-if="!$store.state.isUserLoggedIn" class="nav-item">
               <router-link
                 to="login"
                 class="nav-link"
@@ -40,7 +40,7 @@
                 Log In
               </router-link>
             </li>
-            <li class="nav-item">
+            <li v-if="!$store.state.isUserLoggedIn" class="nav-item">
               <router-link
                 to="register"
                 class="nav-link"
