@@ -15,6 +15,14 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
+          <li class="nav-item">
+              <router-link
+                to="songs"
+                class="nav-link"
+                @click="navigateTo({name: 'songs'})">
+                Browse
+              </router-link>
+            </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li> -->
@@ -37,7 +45,7 @@
                 to="login"
                 class="nav-link"
                 @click="navigateTo({name: 'login'})">
-                Log In
+                LogIn
               </router-link>
             </li>
             <li v-if="!$store.state.isUserLoggedIn" class="nav-item">
@@ -45,8 +53,17 @@
                 to="register"
                 class="nav-link"
                 @click="navigateTo({name: 'register'})">
-                Sign Up
+                SignUp
               </router-link>
+            </li>
+            <li v-if="$store.state.isUserLoggedIn" class="nav-item">
+              <a
+                href="#"
+                to="root"
+                class="nav-link"
+                @click="logout">
+                Log OUT
+              </a>
             </li>
           </ul>
         </div>
@@ -60,6 +77,13 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'root'
+      })
     }
   }
 }
