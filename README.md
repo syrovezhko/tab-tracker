@@ -2,7 +2,7 @@
 You should install all dependencies for `client` and `server` components for starters.
 Run the terminal in the `tab-tracker` folder.  
   
-Check out node.js instalation before begining using `node -v`. It'll displaied your **_node.js_** version. Otherwise, go to [node.js](https://nodejs.org/) official webpage and download the latest **LTS** version.  
+First, check out node.js instalation using `node -v` comand. It'll displayed your **_node.js_** version. Otherwise, go to [node.js](https://nodejs.org/) official webpage and download the latest **LTS** version.  
   
 Then open `client` folder and install dependencies by `cd client && npm install` comand.  
 Make the same for `server` part using `cd .. && cd server && npm install`.
