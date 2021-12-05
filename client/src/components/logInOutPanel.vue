@@ -1,6 +1,5 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-3 col-xs-12 col-md-4">
+    <div class="col-4 col-xs-12 col-md-5">
       <div class="card rounded-3">
         <div class="card-header text-light bg-dark">
           {{title}}
@@ -10,7 +9,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

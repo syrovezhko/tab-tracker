@@ -1,13 +1,15 @@
 <template>
-  <panel title="Songs">
-    <div
-      v-for="song in songs"
-      :key="song.title">
-        {{song.title}}<br>
-        {{song.artist}}<br>
-        {{song.album}}
-    </div>
-  </panel>
+  <div class="row justify-content-center">
+    <panel title="Songs">
+      <div
+        v-for="song in songs"
+        :key="song.id">
+          {{song.title}} -
+           {{song.artist}} -
+           {{song.albom}}
+      </div>
+    </panel>
+  </div>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
   },
   async mounted () {
     // do the request to the backend for all the songs
-    this.songs = await SongsService.index()
+    this.songs = (await SongsService.index()).data
   }
 }
 </script>

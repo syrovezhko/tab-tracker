@@ -1,33 +1,35 @@
 <template>
-  <logInOutPanel title="Register">
-    <div class="card-body">
-      <form novalidate>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="email">
-        </div>
-        <div class="mb-3">
-          <label
-            for="password"
-            class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            v-model="password">
-        </div>
-        <div
-        class="error"
-        v-html="error"/>
-        <button
-          type="submit"
-          class="btn btn-dark"
-          @click="register">
-          Submit
-        </button>
-      </form>
-    </div>
-  </logInOutPanel>
+  <div class="row justify-content-center">
+    <logInOutPanel title="Register">
+      <div class="card-body">
+        <form novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="email">
+          </div>
+          <div class="mb-3">
+            <label
+              for="password"
+              class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              v-model="password">
+          </div>
+          <div
+          class="error"
+          v-html="error"/>
+          <button
+            type="submit"
+            class="btn btn-dark"
+            @click="register">
+            Submit
+          </button>
+        </form>
+      </div>
+    </logInOutPanel>
+  </div>
 </template>
 
 <script>

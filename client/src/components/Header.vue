@@ -1,25 +1,20 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <a
-        href="#"
+      <router-link
         class="navbar-brand"
-        @click="navigateTo({name: 'root'})">
+        :to="{name: 'root'}">
         TabTracker
-      </a>
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
               <router-link
-                to="songs"
-                class="nav-link"
-                @click="navigateTo({name: 'songs'})">
+                :to="{name: 'songs'}"
+                class="nav-link active">
                 Browse
               </router-link>
             </li>
@@ -42,26 +37,24 @@
           <ul class="navbar-nav me-2 mb-2 mb-lg-0">
             <li v-if="!$store.state.isUserLoggedIn" class="nav-item">
               <router-link
-                to="login"
-                class="nav-link"
-                @click="navigateTo({name: 'login'})">
+                :to="{name: 'login'}"
+                class="nav-link">
                 LogIn
               </router-link>
             </li>
             <li v-if="!$store.state.isUserLoggedIn" class="nav-item">
               <router-link
-                to="register"
-                class="nav-link"
-                @click="navigateTo({name: 'register'})">
+                :to="{name: 'register'}"
+                class="nav-link">
                 SignUp
               </router-link>
             </li>
             <li v-if="$store.state.isUserLoggedIn" class="nav-item">
               <a
                 href="#"
+                @click="logout"
                 to="root"
-                class="nav-link"
-                @click="logout">
+                class="nav-link">
                 Log OUT
               </a>
             </li>
@@ -78,10 +71,10 @@ export default {
     navigateTo (route) {
       this.$router.push(route)
     },
-    logout () {
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
-      this.$router.push({
+    async logout () {
+      await this.$store.dispatch('setToken', null)
+      await this.$store.dispatch('setUser', null)
+      await this.$router.push({
         name: 'root'
       })
     }
