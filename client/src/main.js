@@ -9,8 +9,6 @@ import store from '@/store/store'
 
 Vue.config.productionTip = false
 
-// Vue.use(Vuetify)
-
 sync(store, router)
 
 /* eslint-disable no-new */

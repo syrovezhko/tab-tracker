@@ -1,12 +1,12 @@
 <template>
   <div class="row justify-content-center">
     <panel title="Songs">
-      <div
+      <div class="row justify-content-between border border-2 border-secondary border-top-0 border-start-0 border-end-0"
         v-for="song in songs"
         :key="song.id">
-          {{song.title}} -
-           {{song.artist}} -
-           {{song.albom}}
+          <div class="col-4 col-xs-12 col-md-3">{{song.title}}</div>
+          <div class="col-3 col-xs-12 col-md-3">{{song.artist}}</div>
+          <div class="col-5 col-xs-12 col-md-3">{{song.albom}}</div>
       </div>
     </panel>
   </div>

@@ -59,6 +59,7 @@
       </songStructurePanel>
     </div>
     <div class="row justify-content-center">
+      <stan class="mb-4 text-white bg-danger" v-if="error">{{error}}</stan>
       <div class="col">
         <button
           type="submit"
@@ -88,11 +89,20 @@ export default {
         youtubeId: null,
         lyrics: null,
         tab: null
-      }
+      },
+      error: null
     }
   },
   methods: {
     async create () {
+      this.error = null
+      const areAllFieldsFilledIn = Object
+        .keys(this.song)
+        .every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all fields.'
+        return
+      }
       try {
         await SongsService.post(this.song)
         this.$router.push({
