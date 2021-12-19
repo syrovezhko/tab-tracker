@@ -19,7 +19,7 @@ module.exports = {
       res.send(song)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occorred trying to fetch the songs'
+        error: 'An error has occorred trying to show the songs'
       })
     }
   },
@@ -30,6 +30,20 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'An error has occorred trying to create the songs'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      const song = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occorred trying to update the songs'
       })
     }
   }

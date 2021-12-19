@@ -16,15 +16,21 @@
           <div class="col-12 text-start d-none d-sm-block d-md-none">
             <h2>{{song.albom}}</h2>
           </div>
+          <div class="col-12 text-start pb-3">
+            <router-link
+              class="btn btn-outline-dark"
+              role="button"
+              :to="{name: 'song-edit', params: {songId: song.id}}">
+                edit song
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-around pt-4">
       <div class="col">
         <youtube
-          :video-id="youtubeId"
-          :player-width="500"
-          :player-height="200">
+          :video-id="song.youtubeId">
         </youtube>
       </div>
     </div>
@@ -53,7 +59,6 @@ export default {
   async mounted () {
     const songId = this.$store.state.route.params.songId
     this.song = (await SongsService.show(songId)).data
-    console.log(this.song)
   },
   components: {
     VueYouTubeEmbed
