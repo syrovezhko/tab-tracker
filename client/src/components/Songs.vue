@@ -4,19 +4,29 @@
       <div class="row justify-content-start align-items-center border border-2 border-secondary border-top-0 border-start-0 border-end-0"
         v-for="song in songs"
         :key="song.id">
-          <div class="col-1">{{song.id}}</div>
-          <div class="col-3 col-md-1">
+          <router-link
+            class="col-1 link-secondary text-decoration-none"
+            :to="{name: 'song', params: {songId: song.id}}">
+              {{song.id}}
+          </router-link>
+          <router-link
+            class="col-3 col-md-1"
+            :to="{name: 'song', params: {songId: song.id}}">
             <img :src="song.albomImageUrl" alt="" class="">
-          </div>
+          </router-link>
           <div class="col-7 col-md-4">
-            <div class="row justify-content-start align-items-center py-2">
+            <router-link
+              class="row justify-content-start align-items-center py-2 link-secondary text-decoration-none"
+              :to="{name: 'song', params: {songId: song.id}}">
               <div class="col-12 text-start">{{song.title}}</div>
               <div class="col-12 text-start">{{song.artist}}</div>
-            </div>
+            </router-link>
           </div>
-          <div class="col-5 d-none d-md-flex">
-            {{song.albom}}
-          </div>
+          <router-link
+            class="col-5 d-none d-md-flex link-secondary text-decoration-none"
+            :to="{name: 'song', params: {songId: song.id}}">
+              {{song.albom}}
+          </router-link>
       </div>
     </panel>
   </div>
@@ -32,6 +42,11 @@ export default {
   data () {
     return {
       songs: null
+    }
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
     }
   },
   async mounted () {

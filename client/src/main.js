@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { sync } from 'vuex-router-sync'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import store from '@/store/store'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+
+Vue.use(VueYouTubeEmbed)
 
 Vue.config.productionTip = false
 
